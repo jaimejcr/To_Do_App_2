@@ -36,13 +36,28 @@ function addTaskButton() {
       const deleteTask = document.createElement("button");
       deleteTask.className = "delete-btn";
       deleteTask.textContent = "Eliminar";
-      deleteTask.addEventListener("click", ()=>{
+      deleteTask.addEventListener("click", () => {
         listaDeTareas.removeChild(tarea);
       });
-       tarea.appendChild(deleteTask);
-    listaDeTareas.appendChild(tarea);
+      tarea.appendChild(deleteTask);
+      listaDeTareas.appendChild(tarea);
     }
-   
   });
+  return listaDeTareas;
 }
 addTaskButton();
+
+function clear() {
+  const clearBtn = document.querySelector("#clearBtn");
+  const lista = listaDeTareas;
+  clearBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (lista.childElementCount === 0) {
+      alert("No hay ninguna tarea añadida.");
+    } else {
+      lista.innerHTML = "";
+    }
+    console.log(lista.children);
+  });
+}
+clear();
